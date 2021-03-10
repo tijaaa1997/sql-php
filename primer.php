@@ -3,8 +3,8 @@
 
 
     //sve sto je potrebno da bi se ostvarila konekcija ka bazi
-    $username = "root";
-    $password = "password";
+    $username = "milos";
+    $password = "milos";
     $servername = "127.0.0.1";
     $db_name = "users_db";
 

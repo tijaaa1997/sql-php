@@ -6,10 +6,12 @@ $username = "milos";
 $password = "milos";
 $dbname = "users_db";
 
-try{
-    $connection = new POD ("mysql : host=$servername";dbname=$dbname",$username,$password);
     
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE
 
-    
+try {
+    $connection = new PDO("mysql:host=$servername;dbname=$db_name", $username, $password);
+
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo $e->getMessage();
 }

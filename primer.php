@@ -1,5 +1,5 @@
 <?php
-    include "db.php";
+    include "db/db.php";
     //uzimamo ime koje je korisnik uneo
     $unesenoIme = $_GET['ime'];
 

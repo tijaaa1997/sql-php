@@ -15,3 +15,14 @@ try {
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
+
+?>
+
+<html>
+<head></head>
+<body>
+
+<h1>LALALA</h1>
+</body>
+
+</html>

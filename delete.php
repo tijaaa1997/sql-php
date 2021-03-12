@@ -1,21 +1,18 @@
 <?php
-    include "db.php";
 
-    $id = $_GET['id'];
+include "db/db.php";
 
-    //napisati query sql
-    $sql = "DELETE FROM users WHERE id=:izabranKorisnik";
+$id = $_GET['id'];
 
-    $statement = $connection->prepare($sql);
+$sql = "DELETE FROM  users WHERE id=:izabraniKorisnik";
 
-    $statement->bindParam(":izabranKorisnik", $id);
+$statement = $connection->prepare($sql);
+$statement->bindParam(":izabraniKorisnik",$id);
 
-    //izvrsiti ga
-    $statement->execute();
+$statement->execute();
 
-
-    if ($statement->rowCount() > 0) {
-        echo ("Uspesno obrisan korisnik!");
-    } else {
-        echo ("Greska");
-    }
+if($statement->rowCount() > 0){
+    echo ("Uspesno obrisan korisnik");
+}else{
+    echo("Greska");
+}

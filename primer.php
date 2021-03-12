@@ -1,26 +1,5 @@
 <?php
-    //TO DO: sve iz ovog fajla probaj da iskucas u index.php 
-
-
-    //sve sto je potrebno da bi se ostvarila konekcija ka bazi
-    $username = "milos";
-    $password = "milos";
-    $servername = "127.0.0.1";
-    $db_name = "users_db";
-
-
-    try {
-        //pokusavamo da uspostavimo konekciju sa bazom
-        $connection = new PDO("mysql:host=$servername;dbname=$db_name", $username, $password);
-
-        //definisemo da ako se desi greska baci eror
-        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        //ispisujemo eror ukoliko se desi
-        echo $e->getMessage();
-    }
-
-
+    include "db/db.php";
     //uzimamo ime koje je korisnik uneo
     $unesenoIme = $_GET['ime'];
 
@@ -52,7 +31,10 @@
 
 
 <html>
-    <head></head>
+    <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
     <style>
         table, th, td {
              border: 1px solid black;
@@ -70,16 +52,22 @@ Prikazujemo korisnike u tabeli, svaki user je jedan red u tabeli (jedan tr), sva
             <tr>
             <!-- Ovo su nazivi kolona -->
                 <td>Ime</td>
-                <td>Prezime</td>
+                <td>Godine</td>
                 <td>Email</td>
+                <td>Obrisi</td>
+
             </tr>
             <?php
                 foreach($users as $user) {
             ?>   
                 <tr>
-                    <td><?php echo($user['first_name']) ?></td>
-                    <td><?php echo($user['last_name']) ?></td>
+                    <td><?php echo($user['ime']) ?></td>
+                    <td><?php echo($user['godine']) ?></td>
                     <td><?php echo($user['email']) ?></td>
+                    <td> <a href="delete.php?id=<?php echo($user['id'])?>">
+                    <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
                 </tr>
             <?php 
                 }
